@@ -3,9 +3,15 @@ from django.db import models
 #suppose in name of product name there is space so this slugigy
 #will replace space with any char
 from django.utils.text import slugify
+from django.urls import reverse
 
 # Create your models here.
 class Product(models.Model):
+
+    #method to get url
+    def get_absolute_url(self):
+        return reverse('detail',args=[self.slug])
+
     name=models.CharField(max_length=100)
     price=models.FloatField()
     description=models.TextField()
