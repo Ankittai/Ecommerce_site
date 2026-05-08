@@ -26,7 +26,7 @@
         <div class="col-span-1 border rounded-lg p-6 space-y-4 shadow-md">
             <p class="text-2xl font-bold text-gray-900">₹ {{product.price}}</p>
             <div>
-                <select name="" id="">
+                <select name="" id="select">
                     <option value="">1</option>
                     <option value="">2</option>
                     <option value="">3</option>
@@ -38,13 +38,31 @@
             {% else %}
                 <p class="'text-sm text-green-700">Out Of Stock</p>
             {% endif %}
-            <button class="w-full bg-yellow-400 text-black font-semibold py-2 rounded-lg">Add to cart</button>
+            <button id="atc" 
+           value="{{product.id}}" class="w-full bg-yellow-400 text-black font-semibold py-2 rounded-lg">Add to cart</button>
             <button class="w-full bg-gray-900 text-white font-semibold py-2 rounded-lg">Buy Now</button>
             <p class="text-green-600">
                 Sold By: Ankit Enterprise
             </p>
         </div>
     </div>
-
+    <script>
+        $(document).on("click","#atc",function(e){
+            console.log("Add to cart button clicked");
+            $.ajax({
+                type:"POST",
+                url: '{% url "cart_add" %}',
+                data:{
+                    csrfmiddlewaretoken:"{{csrf_token}}",
+                    product_id:$("#atc").val(),
+                    product_quantity:$("#select option:selected").text(),
+                },
+                success: function(json){
+                    consle.log(json);
+                    document.getElementById("cart-qty").textContent=json.qty;
+                }
+            })
+        });
+    </script>
 
 {% endblock %}
