@@ -129,7 +129,7 @@ EMAIL_HOST='smtp.gmail.com'
 EMAIL_PORT=587
 EMAIL_USE_TLS=True
 EMAIL_HOST_USER='ankitsingh76671@gmail.com'
-EMAIL_HOST_PASSWORD="gzivmoitwcepkvlh"
+EMAIL_HOST_PASSWORD=""
 EMAIL_USE_SSL=False
 #remove spaces from password
 
