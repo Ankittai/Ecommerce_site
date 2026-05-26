@@ -31,7 +31,7 @@ class Cart():
             yield item
 
     def add(self,product,product_qty):
-        product_id=product.id
+        product_id=str(product.id)
         if product_id in self.cart:
             self.cart[product_id]['qty']=product_qty
         else:
