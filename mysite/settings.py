@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-^axnk10t+1sik#8b!@r(m_%b%=p1!+^^rfsl6m8yigii*$gff+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -134,6 +134,8 @@ EMAIL_HOST_USER=config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD=config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_SSL=False
 #remove spaces from password
+
+STATIC_ROOT=BASE_DIR / "staticfiles"
 
 
 
